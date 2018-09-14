@@ -17,6 +17,7 @@ def password_generator2():
 	
 
 	password = "".join(psswd)
+	password = hash_pswd(password)
 	if password in password_list:
 		print("Password exists! Try again")
 		password_generator2()
@@ -30,6 +31,10 @@ def Dictionary(range1,range2):
 		for i in range(range1,another_random+1):
 			ch = chr(i)
 		return ch
+def hash_pswd(password):
+	hash_obj = hashlib.sha512(password.encode())
+	hash_digest = hash_obj.hexdigest()
+	return hash_digest
 
 password_generator2()
 	
